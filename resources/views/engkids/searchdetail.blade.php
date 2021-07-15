@@ -9,7 +9,7 @@
 
         <table class="table-vocabulary">
             <thead>
-                <th>Vocabulary</th>
+                <th>Related Vocabulary</th>
             </thead>
             <tbody>
                 @foreach($vocabulary1 as $hehe1)

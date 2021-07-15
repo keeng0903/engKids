@@ -22,17 +22,17 @@ class SearchController extends Controller
 
         $output = DB::table('anh_viet')->where('word', 'LIKE', $request->word)->get();
 
-        $output1 = DB::table('anh_viet')->where('word', 'LIKE', '%'.$request->word.'%')->limit(20)->get();
+        $output1 = DB::table('anh_viet')->inRandomOrder()->limit(20)->get();
 
         
 
         // return $user->email;
-        return view('search',compact('output','output1'));
+        return view('engkids.search',compact('output','output1'));
     }
 
     public function detail($id){
         $vocabulary = DB::table('anh_viet')->find($id);
         $vocabulary1 = DB::table('anh_viet')->inRandomOrder()->limit(20)->get();
-        return view('searchdetail',compact('vocabulary','vocabulary1'));
+        return view('engkids.searchdetail',compact('vocabulary','vocabulary1'));
     }
 }

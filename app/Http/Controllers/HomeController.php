@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     public function index(){
-        return view('home');
+        $decription = DB::table('anh_viet')->inRandomOrder()->limit(20)->get();
+        return view('engkids.home',compact('decription'));
     }
 }

@@ -1,7 +1,7 @@
 @extends('/templates.master')
 @section('content')
 
-
+@if(isset($_SESSION['home']) && count(array($_SESSION['home'])) > 0)
 <div class="content-home">
     <div class="content-infor">
         <div class="container-fuild content-container">
@@ -25,32 +25,33 @@
                     </div>
                 </div>
 
-                <div class="col-12 mt-5 pt-5">
+                <!-- <div class="col-12 mt-5 pt-5">
                     <h5>EngKids' contributions</h5>
+                </div> -->
+                <div class="col-6 contributions-left">
+                    <div class="contributions-left-img">
+                        <img src="{{asset('asset/image/vocabulary.png')}}" alt="">
+                        <p class="text-vocabulary">
+                            Vocabulary <span style="color: red">100000 +</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-6 decription-word-vocabulary">
+                    @foreach($decription as $item)
+                        <a href="{{ route('engkid.detail',['id' => $item->id]) }}"><p>{{$item->word}}</p></a>
+                        <hr>
+                    @endforeach
                 </div>
                 <div class="col-6 contributions-left">
                     <div class="contributions-left-img">
-                        <img src="{{asset('asset/image/vocabulary.jpg')}}" alt="">
-                        <div class="overlay">
-                            <div class="text">
-                                <img src="{{asset('asset/image/vocabulary.png')}}" alt="">
-                                <p>EngKids has a vocabulary of up to 100000 words
-                                </p>
-                            </div>
-                        </div>
+                        <img src="{{asset('asset/image/detection.png')}}" alt="">
+                        <p class="text-vocabulary">
+                            Object recognition <br><span style="color: red">over 90% accuracy </span>
+                        </p>
                     </div>
                 </div>
-                <div class="col-6 contributions-left">
-                    <div class="contributions-left-img">
-                        <img src="{{asset('asset/image/detection.jpg')}}" alt="">
-                        <div class="overlay">
-                            <div class="text">
-                                <img src="{{asset('asset/image/detection.png')}}" alt="">
-                                <p>99% probability object recognition </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="col-6 decription-word-detect">
+                    <p>object recognition results in better user experience, making it easier and more convenient to search for words. Just a few simple steps, put an object in front of the camera, the word you need to search will appear</p></div>
                 <div class="col-12 mt-5 pt-5">
                     <h5>Engkids' object recognition</h5>
                 </div>
@@ -62,10 +63,10 @@
 
                 <div class="col-4 detection-decription-center">
                     <div class="blue-btn">
-                        <a class="first-link" href="">
+                        <a class="first-link" href="{{ route('engkid.camera')}}">
                             Get Started
                         </a>
-                        <a href="">
+                        <a href="{{ route('engkid.camera')}}">
                             Try now
                         </a>
                     </div>
@@ -80,4 +81,5 @@
         </div>
     </div>
 </div>
+@endif
 @endsection

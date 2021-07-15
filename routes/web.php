@@ -15,11 +15,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home')->name('engkid.home');
-});
+Route::get('/','AuthController@login')->name('engkid.login');
 
-Route::get('/','HomeController@index')->name('engkid.home');
+Route::post('/home','UserController@postLogin')->name('engkid.home');
+
+// Route::post('/home','UserController@postLogin')->name('engkid.home');
+
+
+// Route::get('/home','HomeController@index')->name('engkid.home');
+
+
+Route::get('/logout', 'UserController@logout')->name('engkid.logout');
+
+
+// Route::get('/admin', 'UserController@admin');
+
+
+
+Route::get('/register','AuthController@register')->name('engkid.register');
+
+Route::get('/forgot','AuthController@forgot')->name('engkid.forgot');
 
 
 // Route::get('/search-vocabulary', 'SearchController@search')->name('engkids.search');
@@ -29,6 +44,12 @@ Route::get('/search','SearchController@search')->name('engkid.search');
 
 Route::get('/search/{id}','SearchController@detail')->name('engkid.detail');
 
+
+
+Route::get('/camera','CameraController@camera')->name('engkid.camera');
+
+
+// Route::get('/camera','CameraController@searchdetect')->name('engkid.camera');
 // Route::get('/search/{id}','SearchController@detail2')->name('engkid.detail2');
 
 // Route::get('/search-hover','SearchController@searchhover')->name('engkid.searchhover');
